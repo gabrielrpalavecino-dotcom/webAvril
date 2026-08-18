@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Avril - En Construcción</title>
+    <!-- Fuente con estilo moderno/tecnológico ideal para interfaces anime -->
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Rajdhani', sans-serif;
+            background-color: #0d0d0d;
+            /* Fondo oscuro con un degradado sutil hacia el centro */
+            background-image: radial-gradient(circle at center, #1a1a24 0%, #000000 100%);
+            color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            background: rgba(20, 20, 25, 0.85);
+            padding: 50px 40px;
+            border: 1px solid #333;
+            border-top: 4px solid #e50914;
+            /* Acento en rojo carmesí estilo anime */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+        }
+
+        .japanese-text {
+            color: #e50914;
+            font-size: 1.2em;
+            letter-spacing: 5px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 3.5em;
+            margin: 0 0 5px 0;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        p.subtitle {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .image-container {
+            width: 280px;
+            height: 280px;
+            margin: 0 auto 30px;
+            border: 2px solid #444;
+            border-radius: 5px;
+            /* Bordes rectos estilo viñeta de manga */
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(229, 9, 20, 0.2);
+            /* Resplandor rojo sutil */
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+            filter: contrast(1.1);
+            /* Le da un poco más de fuerza al dibujo */
+        }
+
+        .image-container:hover img {
+            transform: scale(1.05);
+        }
+
+        .description {
+            font-size: 1.3em;
+            line-height: 1.5;
+            margin-bottom: 40px;
+            color: #bbb;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            /* Separación reducida para botones compactos */
+        }
+
+        /* Botones reducidos al ~40% de su tamaño original */
+        .social-links a {
+            text-decoration: none;
+            color: #ffffff;
+            background-color: transparent;
+            border: 1px solid #e50914;
+            padding: 4px 12px;
+            /* Relleno reducido drásticamente */
+            font-size: 0.8em;
+            /* Texto mucho más pequeño */
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: #e50914;
+            color: #fff;
+            box-shadow: 0 0 10px rgba(229, 9, 20, 0.6);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Texto superior en japonés: Avril - En preparación -->
+        <div class="japanese-text">アヴリル • 準備中</div>
+
+        <!-- Contenedor del boceto actualizado apuntando a la carpeta img -->
+        <div class="image-container">
+            <img src="img/boceto-avril-logo.jpeg" alt="Logo y Boceto Anime de Avril">
+        </div>
+
+        <h1>Web Avril</h1>
+        <p class="subtitle">Sitio en Construcción</p>
+
+        <p class="description">
+            Cargando lienzo. Muy pronto podrás explorar la galería completa de bocetos, ilustraciones y textos.
+        </p>
+
+        <!-- Enlaces a sus plataformas -->
+        <div class="social-links">
+            <a href="https://instagram.com/avrilrp" target="_blank">Instagram</a>
+            <a href="#" target="_blank">Pinterest</a>
+            <a href="#" target="_blank">Textos</a>
+        </div>
+    </div>
+
+</body>
+
+</html>
