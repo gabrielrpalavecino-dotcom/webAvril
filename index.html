@@ -8,36 +8,90 @@
     <!-- Fuente con estilo moderno/tecnológico ideal para interfaces anime -->
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
     <style>
+        /* Variables de CSS para controlar los colores del Modo Día y Modo Noche */
+        :root {
+            /* MODO NOCHE (Por defecto) */
+            --bg-color: #0d0d0d;
+            --bg-gradient: radial-gradient(circle at center, #1a1a24 0%, #000000 100%);
+            --text-main: #ffffff;
+            --text-secondary: #e0e0e0;
+            --text-muted: #bbb;
+            --container-bg: rgba(20, 20, 25, 0.85);
+            --border-color: #333;
+            --accent-color: #e50914;
+            /* Rojo carmesí anime */
+            --shadow-color: rgba(0, 0, 0, 0.9);
+            --img-border: #444;
+        }
+
+        /* MODO DÍA (Se activa con el botón) */
+        body.light-mode {
+            --bg-color: #f4f4f4;
+            --bg-gradient: radial-gradient(circle at center, #ffffff 0%, #e0e0e0 100%);
+            --text-main: #111111;
+            --text-secondary: #333333;
+            --text-muted: #555555;
+            --container-bg: rgba(255, 255, 255, 0.85);
+            --border-color: #ccc;
+            --accent-color: #d3000f;
+            --shadow-color: rgba(0, 0, 0, 0.15);
+            --img-border: #aaa;
+        }
+
         body {
             margin: 0;
             padding: 0;
             font-family: 'Rajdhani', sans-serif;
-            background-color: #0d0d0d;
-            /* Fondo oscuro con un degradado sutil hacia el centro */
-            background-image: radial-gradient(circle at center, #1a1a24 0%, #000000 100%);
-            color: #e0e0e0;
+            background-color: var(--bg-color);
+            background-image: var(--bg-gradient);
+            color: var(--text-secondary);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
             text-align: center;
+            transition: background 0.4s ease, color 0.4s ease;
+            /* Suaviza la transición de modos */
+        }
+
+        /* Estilos del botón de Modo Día/Noche */
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 8px 15px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.9em;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
         }
 
         .container {
-            background: rgba(20, 20, 25, 0.85);
+            background: var(--container-bg);
             padding: 50px 40px;
-            border: 1px solid #333;
-            border-top: 4px solid #e50914;
-            /* Acento en rojo carmesí estilo anime */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+            border: 1px solid var(--border-color);
+            border-top: 4px solid var(--accent-color);
+            box-shadow: 0 10px 30px var(--shadow-color);
             max-width: 600px;
             width: 90%;
             position: relative;
+            transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
         }
 
         .japanese-text {
-            color: #e50914;
+            color: var(--accent-color);
             font-size: 1.2em;
             letter-spacing: 5px;
             margin-bottom: 15px;
@@ -45,18 +99,17 @@
         }
 
         h1 {
-            color: #ffffff;
+            color: var(--text-main);
             font-size: 3.5em;
             margin: 0 0 5px 0;
             text-transform: uppercase;
             letter-spacing: 3px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
         }
 
         p.subtitle {
             font-size: 1.5em;
             margin-bottom: 30px;
-            color: #888;
+            color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 2px;
         }
@@ -65,12 +118,11 @@
             width: 280px;
             height: 280px;
             margin: 0 auto 30px;
-            border: 2px solid #444;
+            border: 2px solid var(--img-border);
             border-radius: 5px;
-            /* Bordes rectos estilo viñeta de manga */
             overflow: hidden;
             box-shadow: 0 0 20px rgba(229, 9, 20, 0.2);
-            /* Resplandor rojo sutil */
+            transition: border-color 0.4s ease;
         }
 
         .image-container img {
@@ -79,7 +131,6 @@
             object-fit: cover;
             transition: transform 0.4s ease;
             filter: contrast(1.1);
-            /* Le da un poco más de fuerza al dibujo */
         }
 
         .image-container:hover img {
@@ -90,7 +141,7 @@
             font-size: 1.3em;
             line-height: 1.5;
             margin-bottom: 40px;
-            color: #bbb;
+            color: var(--text-muted);
         }
 
         .social-links {
@@ -98,19 +149,15 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 10px;
-            /* Separación reducida para botones compactos */
         }
 
-        /* Botones reducidos al ~40% de su tamaño original */
         .social-links a {
             text-decoration: none;
-            color: #ffffff;
+            color: var(--text-main);
             background-color: transparent;
-            border: 1px solid #e50914;
+            border: 1px solid var(--accent-color);
             padding: 4px 12px;
-            /* Relleno reducido drásticamente */
             font-size: 0.8em;
-            /* Texto mucho más pequeño */
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -118,7 +165,7 @@
         }
 
         .social-links a:hover {
-            background-color: #e50914;
+            background-color: var(--accent-color);
             color: #fff;
             box-shadow: 0 0 10px rgba(229, 9, 20, 0.6);
         }
@@ -127,11 +174,12 @@
 
 <body>
 
+    <!-- Botón para alternar el modo arriba a la derecha -->
+    <button id="btn-theme" class="theme-toggle">☀️ Modo Día</button>
+
     <div class="container">
-        <!-- Texto superior en japonés: Avril - En preparación -->
         <div class="japanese-text">アヴリル • 準備中</div>
 
-        <!-- Contenedor del boceto actualizado apuntando a la carpeta img -->
         <div class="image-container">
             <img src="img/boceto-avril-logo.jpeg" alt="Logo y Boceto Anime de Avril">
         </div>
@@ -143,13 +191,31 @@
             Cargando lienzo. Muy pronto podrás explorar la galería completa de bocetos, ilustraciones y textos.
         </p>
 
-        <!-- Enlaces a sus plataformas -->
+        <!-- Enlaces a redes con target="_blank" para abrir en nueva pestaña -->
         <div class="social-links">
             <a href="https://instagram.com/avrilrp" target="_blank">Instagram</a>
-            <a href="#" target="_blank">Pinterest</a>
+            <a href="https://pinterest.com/" target="_blank">Pinterest</a>
             <a href="#" target="_blank">Textos</a>
         </div>
     </div>
+
+    <!-- Script para hacer funcionar el botón de Modo Día/Noche -->
+    <script>
+        const btnTheme = document.getElementById('btn-theme');
+        const body = document.body;
+
+        btnTheme.addEventListener('click', () => {
+            // Activa o desactiva la clase "light-mode"
+            body.classList.toggle('light-mode');
+
+            // Cambia el texto del botón dependiendo del modo activo
+            if (body.classList.contains('light-mode')) {
+                btnTheme.innerText = '🌙 Modo Noche';
+            } else {
+                btnTheme.innerText = '☀️ Modo Día';
+            }
+        });
+    </script>
 
 </body>
 
