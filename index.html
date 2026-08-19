@@ -14,8 +14,9 @@
             --text-secondary: #e0e0e0;
             --text-muted: #bbb;
             --container-bg: rgba(15, 15, 20, 0.90);
-            --border-color: #333;
             --accent-color: #e50914;
+            --bone-color: #f5f2eb;
+            --violet-color: #8a2be2;
             --shadow-color: rgba(0, 0, 0, 0.9);
             --img-border: #444;
         }
@@ -25,8 +26,9 @@
             --text-secondary: #333333;
             --text-muted: #555555;
             --container-bg: rgba(255, 255, 255, 0.92);
-            --border-color: #ccc;
             --accent-color: #d3000f;
+            --bone-color: #2b2b2b;
+            --violet-color: #7b1fa2;
             --shadow-color: rgba(0, 0, 0, 0.15);
             --img-border: #aaa;
         }
@@ -60,7 +62,7 @@
             right: 15px;
             background: transparent;
             color: var(--text-main);
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--violet-color);
             padding: 6px 12px;
             font-family: 'Rajdhani', sans-serif;
             font-size: 0.85em;
@@ -73,15 +75,15 @@
         }
 
         .theme-toggle:hover {
-            border-color: var(--accent-color);
-            color: var(--accent-color);
+            background-color: var(--violet-color);
+            color: #fff;
+            box-shadow: 0 0 10px rgba(138, 43, 226, 0.6);
         }
 
         .container {
             background: var(--container-bg);
             padding: 30px 25px;
-            border: 1px solid var(--border-color);
-            border-top: 4px solid var(--accent-color);
+            border: none;
             box-shadow: 0 10px 30px var(--shadow-color);
             max-width: 550px;
             width: 90%;
@@ -91,7 +93,7 @@
         }
 
         .japanese-text {
-            color: var(--accent-color);
+            color: var(--violet-color);
             font-size: 1.1em;
             letter-spacing: 4px;
             margin-bottom: 12px;
@@ -105,7 +107,7 @@
             border: 2px solid var(--img-border);
             border-radius: 5px;
             overflow: hidden;
-            box-shadow: 0 0 15px rgba(229, 9, 20, 0.2);
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.2);
         }
 
         .image-container img {
@@ -150,34 +152,35 @@
             gap: 10px;
         }
 
-        .social-links button,
-        .social-links a {
+        /* Botón de Instagram personalizado en tonos hueso y violeta */
+        .social-links button {
             text-decoration: none;
-            color: var(--text-main);
-            background-color: transparent;
-            border: 1px solid var(--accent-color);
-            padding: 4px 12px;
-            font-size: 0.8em;
+            color: var(--bone-color);
+            background-color: var(--violet-color);
+            border: 1px solid var(--bone-color);
+            padding: 6px 16px;
+            font-size: 0.85em;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 1px;
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: 'Rajdhani', sans-serif;
+            border-radius: 4px;
         }
 
-        .social-links button:hover,
-        .social-links a:hover {
-            background-color: var(--accent-color);
-            color: #fff;
-            box-shadow: 0 0 10px rgba(229, 9, 20, 0.6);
+        .social-links button:hover {
+            background-color: var(--bone-color);
+            color: var(--violet-color);
+            border-color: var(--violet-color);
+            box-shadow: 0 0 10px rgba(138, 43, 226, 0.6);
         }
 
         #galeria-seccion {
             display: none;
             margin-top: 18px;
             padding-top: 15px;
-            border-top: 1px dashed var(--border-color);
+            border-top: 1px dashed rgba(255, 255, 255, 0.2);
             animation: fadeIn 0.3s ease;
         }
 
@@ -202,6 +205,28 @@
             height: 100%;
             object-fit: cover;
             transition: opacity 0.4s ease;
+        }
+
+        /* Link de perfil completo dentro de la galería en violeta */
+        #galeria-seccion a {
+            color: var(--violet-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #galeria-seccion a:hover {
+            text-decoration: underline;
+        }
+
+        /* Pie de página centrado en violeta */
+        .footer-credits {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 0.8em;
+            font-weight: 600;
+            color: var(--violet-color);
+            letter-spacing: 1px;
+            line-height: 1.5;
         }
 
         @keyframes fadeIn {
@@ -260,6 +285,12 @@
                     Instagram</a>
             </div>
         </div>
+
+        <!-- Pie de página centrado en color violeta con Madrid -->
+        <div class="footer-credits">
+            © Foxer Anime Art – Madrid<br>
+            © Krusty Broadcasting web services – Madrid
+        </div>
     </div>
 
     <script>
@@ -284,7 +315,6 @@
             }
         });
 
-        // Configurado exactamente para las 4 fotos que tienes en la carpeta scroll
         const totalFotos = 4;
         let indiceActual = 0;
 
