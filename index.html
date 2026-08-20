@@ -22,25 +22,23 @@
             --text-outline: 0 1px 3px rgba(0, 0, 0, 0.9), 0 0 1px rgba(0, 0, 0, 0.8);
         }
 
+        /* Modo Hueso */
         body.light-mode {
-            --text-main: #111111;
-            --text-secondary: #222222;
-            --text-muted: #444444;
-            --container-bg: rgba(255, 255, 255, 0.15);
-            --accent-color: #d3000f;
-            --bone-color: #2b2b2b;
+            --text-main: #2b2b2b;
+            --text-secondary: #3b3b3b;
+            --text-muted: #555555;
+            --container-bg: rgba(245, 242, 235, 0.25);
             --violet-color: #7b1fa2;
-            --shadow-color: rgba(0, 0, 0, 0.05);
-            --img-border: #aaa;
-            --text-outline: 0 1px 2px rgba(255, 255, 255, 0.9), 0 0 1px rgba(255, 255, 255, 0.8);
+            --shadow-color: rgba(0, 0, 0, 0.08);
+            --img-border: #c5bdb0;
+            --text-outline: 0 1px 2px rgba(255, 255, 255, 0.8), 0 0 1px rgba(255, 255, 255, 0.6);
         }
 
         body {
             margin: 0;
             padding: 0;
             font-family: 'Rajdhani', sans-serif;
-            background: linear-gradient(rgba(10, 10, 12, 0.3),
-                    rgba(10, 10, 12, 0.3)), url('img/Fondo horizontal-1.jpeg') no-repeat center center fixed;
+            background: linear-gradient(rgba(10, 10, 12, 0.3), rgba(10, 10, 12, 0.3)), url('img/Fondo horizontal-1.jpeg') no-repeat center center fixed;
             background-size: cover;
             color: var(--text-secondary);
             display: flex;
@@ -54,8 +52,7 @@
         }
 
         body.light-mode {
-            background: linear-gradient(rgba(240, 240, 245, 0.3),
-                    rgba(240, 240, 245, 0.3)), url('img/Fondo horizontal-1.jpeg') no-repeat center center fixed;
+            background: linear-gradient(rgba(245, 242, 235, 0.35), rgba(245, 242, 235, 0.35)), url('img/Fondo horizontal-1.jpeg') no-repeat center center fixed;
             background-size: cover;
         }
 
@@ -66,9 +63,8 @@
             background: transparent;
             color: var(--text-main);
             border: 1px solid var(--violet-color);
-            padding: 6px 12px;
+            padding: 5px 10px;
             font-family: 'Rajdhani', sans-serif;
-            font-size: 0.85em;
             font-weight: bold;
             text-transform: uppercase;
             cursor: pointer;
@@ -78,25 +74,20 @@
             text-shadow: none;
         }
 
-        .theme-toggle:hover {
-            background-color: var(--violet-color);
-            color: #fff;
-            box-shadow: 0 0 10px rgba(138, 43, 226, 0.6);
+        body.light-mode .theme-toggle {
+            color: #2b2b2b;
         }
 
         .container {
             background: var(--container-bg);
             padding: 30px 25px;
-            border: none;
             box-shadow: 0 10px 30px var(--shadow-color);
-            max-width: 550px;
             width: 90%;
-            position: relative;
+            max-width: 550px;
             backdrop-filter: blur(8px);
             margin: 20px auto;
         }
 
-        /* Letra japonesa superior ligeramente más grande */
         .japanese-text {
             color: var(--violet-color);
             font-size: 1.25em;
@@ -112,18 +103,12 @@
             border: 2px solid var(--img-border);
             border-radius: 5px;
             overflow: hidden;
-            box-shadow: 0 0 15px rgba(138, 43, 226, 0.2);
         }
 
         .image-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-
-        .image-container:hover img {
-            transform: scale(1.05);
         }
 
         h1 {
@@ -136,7 +121,6 @@
             font-weight: 700;
         }
 
-        /* Letra japonesa del título secundario sutilmente ampliada */
         .japanese-title {
             font-family: 'Noto Serif JP', serif;
             color: var(--text-muted);
@@ -153,42 +137,23 @@
             font-weight: 600;
         }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-
         .social-links button {
-            text-decoration: none;
-            color: var(--bone-color);
             background-color: var(--violet-color);
-            border: 1px solid var(--bone-color);
+            color: #fff;
+            border: none;
             padding: 6px 16px;
-            font-size: 0.85em;
+            cursor: pointer;
+            border-radius: 4px;
+            font-family: 'Rajdhani', sans-serif;
             font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Rajdhani', sans-serif;
-            border-radius: 4px;
-            text-shadow: none;
-        }
-
-        .social-links button:hover {
-            background-color: var(--bone-color);
-            color: var(--violet-color);
-            border-color: var(--violet-color);
-            box-shadow: 0 0 10px rgba(138, 43, 226, 0.6);
         }
 
         #galeria-seccion {
             display: none;
             margin-top: 18px;
             padding-top: 15px;
-            border-top: 1px dashed rgba(255, 255, 255, 0.3);
-            animation: fadeIn 0.3s ease;
+            border-top: 1px dashed rgba(138, 43, 226, 0.3);
         }
 
         .gallery-grid {
@@ -211,38 +176,23 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: opacity 0.4s ease;
-        }
-
-        #galeria-seccion a {
-            color: var(--violet-color);
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        #galeria-seccion a:hover {
-            text-decoration: underline;
         }
 
         .footer-credits {
             margin-top: 25px;
-            text-align: center;
             font-size: 0.8em;
             font-weight: 700;
             color: var(--violet-color);
-            letter-spacing: 1px;
-            line-height: 1.5;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(5px);
+        @media screen and (max-width: 480px) {
+            .container {
+                padding: 20px 15px;
             }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            .image-container {
+                width: 150px;
+                height: 150px;
             }
         }
     </style>
@@ -253,94 +203,40 @@
     <button id="btn-theme" class="theme-toggle">☀️ Modo Día</button>
 
     <div class="container">
-        <div class="japanese-text">フォックス • 準備中</div>
-
-        <div class="image-container">
-            <img src="img/boceto-avril-logo.jpeg" alt="Logo y Boceto Anime de Foxer">
-        </div>
-
+        <div class="japanese-text">フォックス • 准备中</div>
+        <div class="image-container"><img src="img/boceto-avril-logo.jpeg" alt="Logo"></div>
         <h1>Foxer Anime Art</h1>
         <div class="japanese-title">フォックスアニメアート</div>
-
-        <p class="description">
-            Muy pronto bocetos, ilustraciones y textos.
-        </p>
-
-        <div class="social-links">
-            <button id="btn-abrir-galeria">Instagram</button>
-        </div>
+        <p class="description">Muy pronto bocetos, ilustraciones y textos.</p>
+        <div class="social-links"><button id="btn-abrir-galeria">Instagram</button></div>
 
         <div id="galeria-seccion">
-            <p style="font-size: 1em; color: var(--text-main); margin-bottom: 10px;">Galería de Avances</p>
-
             <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img id="scroll-slot-1" src="img/scroll/foto-1.jpeg" alt="Foto 1">
-                </div>
-                <div class="gallery-item">
-                    <img id="scroll-slot-2" src="img/scroll/foto-2.jpeg" alt="Foto 2">
-                </div>
-                <div class="gallery-item">
-                    <img id="scroll-slot-3" src="img/scroll/foto-3.jpeg" alt="Foto 3">
-                </div>
+                <div class="gallery-item"><img id="scroll-slot-1" src="img/scroll/foto-1.jpeg"></div>
+                <div class="gallery-item"><img id="scroll-slot-2" src="img/scroll/foto-2.jpeg"></div>
+                <div class="gallery-item"><img id="scroll-slot-3" src="img/scroll/foto-3.jpeg"></div>
             </div>
-
-            <div style="margin-top: 10px;">
-                <a href="https://instagram.com/foxer_2012_cris" target="_blank" style="font-size: 0.85em;">Ver perfil en
-                    Instagram</a>
-            </div>
+            <a href="https://instagram.com/foxer_2012_cris" target="_blank"
+                style="color:var(--violet-color); text-decoration:none; font-weight:bold;">Ver perfil</a>
         </div>
 
-        <div class="footer-credits">
-            © Foxer Anime Art – Madrid<br>
-            © Krusty Broadcasting web services – Madrid
-        </div>
+        <div class="footer-credits">© Foxer Anime Art – Madrid<br>© Krusty Broadcasting web services</div>
     </div>
 
     <script>
         const btnTheme = document.getElementById('btn-theme');
-        const body = document.body;
-
         btnTheme.addEventListener('click', () => {
-            body.classList.toggle('light-mode');
-            btnTheme.innerText = body.classList.contains('light-mode') ? '🌙 Modo Noche' : '☀️ Modo Día';
+            document.body.classList.toggle('light-mode');
+            btnTheme.innerText = document.body.classList.contains('light-mode') ? '🌙 Modo Noche' : '☀️ Modo Día';
         });
 
         const btnGaleria = document.getElementById('btn-abrir-galeria');
         const seccionGaleria = document.getElementById('galeria-seccion');
-
         btnGaleria.addEventListener('click', () => {
-            if (seccionGaleria.style.display === 'block') {
-                seccionGaleria.style.display = 'none';
-                btnGaleria.innerText = 'Instagram';
-            } else {
-                seccionGaleria.style.display = 'block';
-                btnGaleria.innerText = 'Cerrar Galería';
-            }
+            seccionGaleria.style.display = (seccionGaleria.style.display === 'block') ? 'none' : 'block';
+            btnGaleria.innerText = (seccionGaleria.style.display === 'block') ? 'Cerrar Galería' : 'Instagram';
         });
-
-        const totalFotos = 4;
-        let indiceActual = 0;
-
-        const slot1 = document.getElementById('scroll-slot-1');
-        const slot2 = document.getElementById('scroll-slot-2');
-        const slot3 = document.getElementById('scroll-slot-3');
-
-        function actualizarScroll() {
-            const idx1 = (indiceActual % totalFotos) + 1;
-            const idx2 = ((indiceActual + 1) % totalFotos) + 1;
-            const idx3 = ((indiceActual + 2) % totalFotos) + 1;
-
-            slot1.src = `img/scroll/foto-${idx1}.jpeg`;
-            slot2.src = `img/scroll/foto-${idx2}.jpeg`;
-            slot3.src = `img/scroll/foto-${idx3}.jpeg`;
-
-            indiceActual = (indiceActual + 1) % totalFotos;
-        }
-
-        setInterval(actualizarScroll, 3500);
     </script>
-
 </body>
 
 </html>
