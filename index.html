@@ -2,241 +2,790 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foxer Anime Art</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700&family=Rajdhani:wght@500;700&display=swap"
-        rel="stylesheet">
+    <meta charset="utf-8" />
+    <title>Así de Rico Bakery</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
     <style>
-        :root {
-            --text-main: #ffffff;
-            --text-secondary: #e0e0e0;
-            --text-muted: #cccccc;
-            --container-bg: rgba(15, 15, 20, 0.15);
-            --accent-color: #e50914;
-            --bone-color: #f5f2eb;
-            --violet-color: #8a2be2;
-            --shadow-color: rgba(0, 0, 0, 0.4);
-            --img-border: #444;
-            --text-outline: 0 1px 3px rgba(0, 0, 0, 0.9), 0 0 1px rgba(0, 0, 0, 0.8);
-        }
-
-        /* Modo Hueso */
-        body.light-mode {
-            --text-main: #2b2b2b;
-            --text-secondary: #3b3b3b;
-            --text-muted: #555555;
-            --container-bg: rgba(245, 242, 235, 0.25);
-            --violet-color: #7b1fa2;
-            --shadow-color: rgba(0, 0, 0, 0.08);
-            --img-border: #c5bdb0;
-            --text-outline: 0 1px 2px rgba(255, 255, 255, 0.8), 0 0 1px rgba(255, 255, 255, 0.6);
-        }
-
+        /* ========================= */
+        /* FONDO GLOBAL ANIMADO      */
+        /* ========================= */
         body {
             margin: 0;
-            padding: 0;
-            font-family: 'Rajdhani', sans-serif;
-            background: linear-gradient(rgba(10, 10, 12, 0.3), rgba(10, 10, 12, 0.3)), url('img/Fondo horizontal-1.jpeg') no-repeat center center fixed;
-            background-size: cover;
-            color: var(--text-secondary);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
+            background: linear-gradient(180deg, #f2b38f, #ffe7d6);
+            animation: fondoSuave 12s ease-in-out infinite alternate;
+            transition: background 1s ease-in-out;
+        }
+
+        @keyframes fondoSuave {
+            0% {
+                background: linear-gradient(180deg, #f2b38f, #ffe7d6);
+            }
+
+            50% {
+                background: linear-gradient(180deg, #f7c7a8, #fff3e8);
+            }
+
+            100% {
+                background: linear-gradient(180deg, #f2b38f, #ffe7d6);
+            }
+        }
+
+        /* ========================= */
+        /* VARIABLES                 */
+        /* ========================= */
+        :root {
+            --accent: #e91e63;
+            --accent-dark: #b3004b;
+            --card: #ffffff;
+            --muted: #6b2a3a;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* ========================= */
+        /* NAV                       */
+        /* ========================= */
+        nav {
+            background: var(--card);
+            padding: 10px 12px;
             text-align: center;
-            overflow-x: hidden;
-            text-shadow: var(--text-outline);
+            border-bottom: 1px solid #ffe0e0;
+            position: sticky;
+            top: 0;
+            z-index: 20;
         }
 
-        body.light-mode {
-            background: linear-gradient(rgba(245, 242, 235, 0.35), rgba(245, 242, 235, 0.35)), url('img/Fondo horizontal-1.jpeg') no-repeat center center fixed;
-            background-size: cover;
-        }
-
-        .theme-toggle {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: transparent;
-            color: var(--text-main);
-            border: 1px solid var(--violet-color);
-            padding: 5px 10px;
-            font-family: 'Rajdhani', sans-serif;
-            font-weight: bold;
-            text-transform: uppercase;
+        nav a {
+            color: #8b2b3a;
+            margin: 0 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
             cursor: pointer;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(4px);
-            text-shadow: none;
         }
 
-        body.light-mode .theme-toggle {
-            color: #2b2b2b;
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* ========================= */
+        /* HERO                      */
+        /* ========================= */
+        .hero {
+            padding: 28px 16px;
+            text-align: center;
+            background: transparent !important;
+        }
+
+        .logo {
+            width: 40%;
+            max-width: 60%;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px auto;
+            background: transparent !important;
+        }
+
+        .hero h2 {
+            text-align: center;
+            color: var(--muted);
+            font-weight: 700;
+            font-size: 18px;
+            opacity: 0.95;
+        }
+
+        /* BOTÓN MODO NOCHE / DÍA — MINI Y ARRIBA A LA DERECHA */
+        .modo-btn {
+            position: fixed;
+            top: 5px;
+            right: 5px;
+            background: #659f00;
+            color: #333;
+            padding: 6px 10px;
+            /* más pequeño */
+            border-radius: 6px;
+            border: none;
+            font-size: 10px;
+            /* más pequeño */
+            font-weight: 700;
+            cursor: pointer;
+            z-index: 9999;
+            transition: 0.3s;
+        }
+
+        .modo-btn:hover {
+            transform: scale(1.05);
+        }
+
+
+        .modo-btn:hover {
+            transform: scale(1.05);
+        }
+
+        body.modo-dia {
+            background: linear-gradient(180deg, #f2b38f, #ffe7d6);
+        }
+
+        body.modo-noche {
+            background: linear-gradient(180deg, #1a1a1a, #000000);
+            color: #f2f2f2;
+        }
+
+        body.modo-noche img {
+            filter: brightness(0.85);
+        }
+
+        /* ========================= */
+        /* SECTIONS                  */
+        /* ========================= */
+        section {
+            padding: 18px 12px;
+            display: none;
+        }
+
+        section.active {
+            display: block;
         }
 
         .container {
-            background: var(--container-bg);
-            padding: 30px 25px;
-            box-shadow: 0 10px 30px var(--shadow-color);
-            width: 90%;
-            max-width: 550px;
-            backdrop-filter: blur(8px);
-            margin: 20px auto;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 18px;
+            width: 100%;
         }
 
-        .japanese-text {
-            color: var(--violet-color);
-            font-size: 1.25em;
-            letter-spacing: 4px;
-            margin-bottom: 12px;
-            font-weight: bold;
+        /* ========================= */
+        /* GRID PRODUCTOS            */
+        /* ========================= */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
         }
 
-        .image-container {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 15px;
-            border: 2px solid var(--img-border);
-            border-radius: 5px;
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #ffd6d6;
+            display: flex;
+            flex-direction: column;
             overflow: hidden;
+            height: 300px;
         }
 
-        .image-container img {
+        .card-media {
+            width: 100%;
+            height: 130px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+        }
+
+        .card-media img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        h1 {
-            font-family: 'Noto Serif JP', serif;
-            color: var(--text-main);
-            font-size: 1.5em;
-            margin: 0 0 4px 0;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-weight: 700;
+        .card-body {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex: 1;
         }
 
-        .japanese-title {
-            font-family: 'Noto Serif JP', serif;
-            color: var(--text-muted);
-            font-size: 1em;
-            letter-spacing: 2px;
+        .card-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: #b3004b;
+            margin: 0 0 6px 0;
+        }
+
+        .card-desc {
+            font-size: 12px;
+            color: #5a2a36;
+            line-height: 1.2;
+            height: 45px;
+            overflow: hidden;
+        }
+
+        .order-btn {
+            background: #e91e63;
+            color: #fff;
+            border: 0;
+            padding: 6px 8px;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 12px;
+            text-align: center;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        /* ========================= */
+        /* RESPONSIVE                */
+        /* ========================= */
+        @media (max-width:1200px) {
+            .grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width:880px) {
+            .grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width:640px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width:420px) {
+            .grid {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+
+        /* ========================= */
+        /* FOOTER                    */
+        /* ========================= */
+        .footer-main {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .footer-col h4 {
+            color: var(--muted);
+            font-weight: 800;
             margin-bottom: 10px;
         }
 
-        .description {
-            font-size: 1.05em;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-            color: var(--text-muted);
+        .payment-icons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .footer-copy {
+            text-align: center;
+            width: 100%;
+            padding: 12px 0;
+            font-size: 12px;
             font-weight: 600;
+            opacity: 0.8;
+            color: #ccc;
         }
 
-        .social-links button {
-            background-color: var(--violet-color);
-            color: #fff;
-            border: none;
-            padding: 6px 16px;
-            cursor: pointer;
-            border-radius: 4px;
-            font-family: 'Rajdhani', sans-serif;
-            font-weight: bold;
-            text-transform: uppercase;
+        body.modo-noche .footer-copy {
+            color: #ddd;
         }
 
-        #galeria-seccion {
-            display: none;
-            margin-top: 18px;
-            padding-top: 15px;
-            border-top: 1px dashed rgba(138, 43, 226, 0.3);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            margin-bottom: 12px;
-        }
-
-        .gallery-item {
-            width: 100%;
-            height: 80px;
-            border: 2px solid var(--img-border);
-            border-radius: 4px;
-            overflow: hidden;
-            background: #000;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .footer-credits {
-            margin-top: 25px;
-            font-size: 0.8em;
-            font-weight: 700;
-            color: var(--violet-color);
-        }
-
-        @media screen and (max-width: 480px) {
-            .container {
-                padding: 20px 15px;
-            }
-
-            .image-container {
-                width: 150px;
-                height: 150px;
-            }
+        body.modo-noche .payment-icons img {
+            background: #222 !important;
+            border-color: #444 !important;
         }
     </style>
+
+    <script>
+        function showTab(id) {
+            document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.addEventListener('DOMContentLoaded', () => showTab('caratula'));
+    </script>
+
 </head>
 
 <body>
 
-    <button id="btn-theme" class="theme-toggle">☀️ Modo Día</button>
+    <nav>
+        <a onclick="showTab('caratula')">Carátula</a>
+        <a onclick="showTab('productos')">Productos</a>
+        <a onclick="showTab('carrito')">Carrito</a>
+        <a onclick="showTab('envios')">Envíos</a>
+        <a onclick="showTab('contacto')">Contacto</a>
+        <a onclick="showTab('nosotros')">Nosotros</a>
+    </nav>
 
-    <div class="container">
-        <div class="japanese-text">フォックス • 准备中</div>
-        <div class="image-container"><img src="img/boceto-avril-logo.jpeg" alt="Logo"></div>
-        <h1>Foxer Anime Art</h1>
-        <div class="japanese-title">フォックスアニメアート</div>
-        <p class="description">Muy pronto bocetos, ilustraciones y textos.</p>
-        <div class="social-links"><button id="btn-abrir-galeria">Instagram</button></div>
+    <!-- CARÁTULA -->
+    <section id="caratula" class="active">
+        <div class="hero">
+            <img src="img/logo nuevo asiderico.png" class="logo" alt="Así de Rico Bakery">
+            <h2>Pastelería artesanal · Tartas · Alfajores · Cookies</h2>
 
-        <div id="galeria-seccion">
-            <div class="gallery-grid">
-                <div class="gallery-item"><img id="scroll-slot-1" src="img/scroll/foto-1.jpeg"></div>
-                <div class="gallery-item"><img id="scroll-slot-2" src="img/scroll/foto-2.jpeg"></div>
-                <div class="gallery-item"><img id="scroll-slot-3" src="img/scroll/foto-3.jpeg"></div>
+            <button id="modoToggle" class="modo-btn">🌙 Modo Noche</button>
+        </div>
+    </section>
+
+    <!-- PRODUCTOS -->
+    <section id="productos">
+        <div class="container">
+            <h1 style="text-align:center; margin-bottom:12px; color:var(--muted); font-size:60px;">Productos</h1>
+
+            <div class="grid">
+
+                <!-- Aquí van tus 17 productos, ya corregidos -->
+                <!-- (Los mantengo tal cual, solo corregí estructura y clases) -->
+
+                <!-- Producto 1 -->
+                <div class="card">
+                    <div class="card-media">
+                        <img src="img/cuadrados de brownie.jpg" alt="Cuadrados de Brownie">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Cuadrados de Brownie — €32</h3>
+                        <p class="card-desc">Brownie húmedo con base crocante y cobertura de chocolate.</p>
+                        <a class="order-btn" onclick="addToCart('Cuadrados de Brownie', 32)">Agregar al carrito</a>
+                    </div>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="card">
+                    <div class="card-media">
+                        <img src="img/pastafrola de membrillo.png" alt="Mini Frolas">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Mini Frolas — €16</h3>
+                        <p class="card-desc">Masa casera con dulce de membrillo, textura hojaldrada.</p>
+                        <a class="order-btn" onclick="addToCart('Mini Frolas', 16)">Agregar al carrito</a>
+                    </div>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="card">
+                    <div class="card-media">
+                        <img src="img/alfajores de maicena.png" alt="Alfajores de Maicena">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Alfajores de Maicena — €18</h3>
+                        <p class="card-desc">Clásicos con dulce de leche y coco rallado.</p>
+                        <a class="order-btn" onclick="addToCart('Alfajores de Maicena', 18)">Agregar al carrito</a>
+                    </div>
+                </div>
+
+                <!-- Producto 4 -->
+                <div class="card">
+                    <div class="card-media">
+                        <img src="img/tartas de cumple.jpg" alt="Tarta de Cumpleaños">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Tarta de Cumpleaños — €60</h3>
+                        <p class="card-desc">Bizcocho esponjoso decorado a pedido, personalizable.</p>
+                        <a class="order-btn" onclick="addToCart('Tarta de Cumpleaños', 60)">Agregar al carrito</a>
+                    </div>
+                </div>
+
+                <!-- Producto 5 -->
+                <div class="card">
+                    <div class="card-media">
+                        <img src="img/chocotorta.png" alt="Chocotorta">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Chocotorta — €25</h3>
+                        <p class="card-desc">Capas de galletas con crema y dulce de leche.</p>
+                        <a class="order-btn" onclick="addToCart('Chocotorta', 25)">Agregar al carrito</a>
+                    </div>
+                </div>
+
+                <!-- Producto 6 -->
+                <div class="card">
+                    <div class="card-media">
+                        <img src="img/pastel primavera.png" alt="Pastel Primavera">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Pastel Primavera — €34</h3>
+                        <p class="card-desc">Bizcocho con frutas frescas y crema ligera.</p>
+                        <a class="order-btn" onclick="addToCart('Pastel Primavera', 34)">Agregar al carrito</a>
+                    </div>
+                </div>
+
+                <!-- Producto 7 -->
+                <div class="card">
+                    <div class="card-media">
+                        <img src="img/cuadrados de limon.png" alt="Cuadrados de Limón">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Cuadrados de Limón — €20</h3>
+                        <p class="card-desc">Cuadrados cítricos con glaseado y toque de merengue.</p>
+                        <a class="order-btn" onclick="addToCart('Cuadrados de Limón', 20)">Agregar al carrito</a>
+                    </div>
+                </div>
+
+                <!-- Producto 8 -->
+                <div class="card">
+                    <div class="card-media">
+                        <img src="img/mini cakes.png" alt="Mini Cakes">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Mini Cakes — €15</h3>
+                        <p class="card-desc">Bizcochos caseros esponjosos, ideales para meriendas.</p>
+                        <a class="order-btn" onclick="addToCart('Mini Cakes', 15)">Agregar al carrito</a>
+                    </div>
+                </div>
+
+                <!-- Producto 9 -->
+                <div class="card">
+                    <div class="card-media">
+                        <img src="img/torta rogel.png" alt="Torta Rogel">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Torta Rogel — €29</h3>
+                        <p class="card-desc">Capas finas con dulce de leche y merengue crocante.</p>
+                        <a class="order-btn" onclick="addToCart('Torta Rogel', 29)">Agregar al carrito</a>
+                    </div>
+                </div>
+
+                <!-- Producto 10 -->
+                <div class="card">
+                    <div class="card-media">
+                        <img src="img/torta vintage.png" alt="Torta Vintage">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Torta Vintage — €48</h3>
+                        <p class="card-desc">Decoración retro personalizada para eventos.</p>
+                        <a class="order-btn" onclick="addToCart('Torta Vintage', 48)">Agregar al carrito</a>
+                    </div>
+                </div>
+
+                <!-- Producto 11 -->
+                <div class="card">
+                    <div class="card-media">
+                        <img src="img/chessecake con frutos rojos.png" alt="Cheesecake">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Cheesecake — €24</h3>
+                        <p class="card-desc">Cheesecake cremoso con frutos rojos.</p>
+                        <a class="order-btn" onclick="addToCart('Cheesecake', 24)">Agregar al carrito</a>
+                    </div>
+                </div>
+
+                <!-- Producto 12 -->
+                <div class="card">
+                    <div class="card-media">
+                        <img src="img/tarta brownie.png" alt="Tarta Brownie XL">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Tarta Brownie XL — €45</h3>
+                        <p class="card-desc">Versión grande del clásico brownie para compartir.</p>
+                        <a class="order-btn" onclick="addToCart('Tarta Brownie XL', 45)">Agregar al carrito</a>
+                    </div>
+                </div>
+
+                <!-- Producto 13 -->
+                <div class="card">
+                    <div class="card-media">
+                        <img src="img/mix de alfajores.png" alt="Mix de Alfajores">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Mix de Alfajores — €22</h3>
+                        <p class="card-desc">Alfajores gourmet con baño de chocolate.</p>
+                        <a class="order
+                                        <!-- Producto 14 -->
+                <div class=" card">
+                            <div class="card-media">
+                                <img src="img/Lemon pie.png" alt="Lemon Pie">
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">Lemon Pie — €28</h3>
+                                <p class="card-desc">Clásico pie de limón con merengue dorado.</p>
+                                <a class="order-btn" onclick="addToCart('Lemon Pie', 28)">Agregar al carrito</a>
+                            </div>
+                    </div>
+
+                    <!-- Producto 15 -->
+                    <div class="card">
+                        <div class="card-media">
+                            <img src="img/cookies artesanales.png" alt="Cookies Artesanales">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Cookies Artesanales — €12</h3>
+                            <p class="card-desc">Cookies caseras con chips de chocolate.</p>
+                            <a class="order-btn" onclick="addToCart('Cookies Artesanales', 12)">Agregar al carrito</a>
+                        </div>
+                    </div>
+
+                    <!-- Producto 16 -->
+                    <div class="card">
+                        <div class="card-media">
+                            <img src="img/tartas personalizadas.png" alt="Tartas Personalizadas">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Tartas Personalizadas — €32</h3>
+                            <p class="card-desc">Diseños únicos para eventos especiales.</p>
+                            <a class="order-btn" onclick="addToCart('Tartas Personalizadas', 32)">Agregar al carrito</a>
+                        </div>
+                    </div>
+
+                    <!-- Producto 17 -->
+                    <div class="card">
+                        <div class="card-media">
+                            <img src="img/Carrot cake.png" alt="Carrot Cake">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Carrot Cake — €30</h3>
+                            <p class="card-desc">Bizcocho húmedo de zanahoria con nueces y frosting de queso crema.</p>
+                            <a class="order-btn" onclick="addToCart('Carrot Cake', 30)">Agregar al carrito</a>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            <a href="https://instagram.com/foxer_2012_cris" target="_blank"
-                style="color:var(--violet-color); text-decoration:none; font-weight:bold;">Ver perfil</a>
+    </section>
+
+    <!-- CARRITO -->
+    <section id="carrito">
+        <div class="container">
+            <h1 style="text-align:center; margin-bottom:12px; color:var(--muted); font-size:60px;">Carrito</h1>
+
+            <div id="cart-list" style="margin-bottom:20px;font-size:15px;color:#6b2a3a;">
+                No hay productos en el carrito.
+            </div>
+
+            <div id="cart-total" style="font-weight:800;font-size:18px;color:#b3004b;margin-bottom:20px;">
+                Total: €0
+            </div>
+
+            <a id="cart-whatsapp" target="_blank"
+                style="display:inline-block;padding:12px 18px;background:#e91e63;color:white;border-radius:10px;font-weight:800;text-decoration:none;">
+                Finalizar pedido por WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- ENVÍOS -->
+    <section id="envios">
+        <div class="container">
+            <h1 style="text-align:center; margin-bottom:12px; color:var(--muted); font-size:60px;">Envíos</h1>
+
+            <p>
+                Entregamos en Madrid Centro y alrededores mediante servicios de mensajería
+                (Uber / Bolt / Glovo según producto).
+                <br><br>
+                ✔ Consultar costo de envío por zona<br>
+                ✔ Pedidos con 24 a 72 horas de anticipación<br>
+                ✔ Elaboración: martes a sábado<br>
+                ✔ Entregas: martes a domingo
+            </p>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+        <div class="container">
+            <h1 style="text-align:center; margin-bottom:12px; color:var(--muted); font-size:60px;">Contacto</h1>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:1000px;margin:0 auto;">
+
+                <div>
+                    <h3>Escribinos</h3>
+                    <div style="display:flex;flex-direction:column;gap:8px;">
+                        <a href="https://wa.me/34622403795"
+                            style="color:var(--accent);font-weight:800;text-decoration:none;">
+                            WhatsApp: +34 622 403 795
+                        </a>
+
+                        <a href="mailto:asidericopasteleria@gmail.com"
+                            style="color:var(--accent);font-weight:800;text-decoration:none;">
+                            Email: asidericopasteleria@gmail.com
+                        </a>
+
+                        <a href="https://instagram.com/asiderico"
+                            style="color:var(--accent);font-weight:800;text-decoration:none;">
+                            Instagram: @asiderico
+                        </a>
+
+                        <a href="https://facebook.com/asiderico"
+                            style="color:var(--accent);font-weight:800;text-decoration:none;">
+                            Facebook: Así de Rico Bakery
+                        </a>
+                    </div>
+
+                    <h3 style="margin-top:12px;">Horario</h3>
+                    <p>Pedidos: 9:00 – 18:00 (Lun a Sáb). Elaboración: Mar a Sáb.</p>
+                </div>
+
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3036.1234567890123!2d-3.70379028459321!3d40.41677597936444"
+                    width="100%" height="260" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOSOTROS -->
+    <section id="nosotros">
+        <div class="container">
+            <h1 style="text-align:center; margin-bottom:12px; color:var(--muted); font-size:60px;">Nosotros</h1>
+
+            <p>
+                Así de Rico es una pastelería artesanal especializada en tartas, alfajores y dulces argentinos.
+                <br><br>
+                Elaboramos con ingredientes seleccionados y recetas tradicionales.
+                <br>
+                Cada producto se hace a mano, con dedicación y amor por la pastelería.
+            </p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer aria-label="Pie de página principal">
+
+        <div class="footer-main">
+
+            <!-- MEDIOS DE PAGO -->
+            <div class="footer-col">
+                <h4>MEDIOS DE PAGO</h4>
+                <div class="payment-icons">
+
+                    <img src="img/deposito bancario.png" alt="Pago bancario"
+                        style="width:65px;height:65px;border-radius:6px;border:1px solid #ffd6d6;background:#fff;padding:4px;">
+
+                    <a href="https://bizum.es" target="_blank">
+                        <img src="img/bizum.png" alt="Bizum"
+                            style="width:65px;height:65px;border-radius:6px;border:1px solid #ffd6d6;background:#fff;padding:4px;">
+                    </a>
+
+                    <img src="img/acordar.png" alt="Acordar pago"
+                        style="width:65px;height:65px;border-radius:6px;border:1px solid #ffd6d6;background:#fff;padding:4px;">
+                </div>
+            </div>
+
+            <!-- REDES -->
+            <div class="footer-col">
+                <h4>REDES</h4>
+                <div class="payment-icons">
+
+                    <a href="https://instagram.com/asiderico_madrid" target="_blank">
+                        <img src="img/instagram.png" alt="Instagram"
+                            style="width:65px;height:65px;border-radius:6px;border:1px solid #ffd6d6;background:#fff;padding:4px;">
+                    </a>
+
+                    <a href="https://facebook.com/asiderico" target="_blank">
+                        <img src="img/facebook.png" alt="Facebook"
+                            style="width:65px;height:65px;border-radius:6px;border:1px solid #ffd6d6;background:#fff;padding:4px;">
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- CONTACTO -->
+            <div class="footer-col">
+                <h4>CONTACTO</h4>
+                <div class="payment-icons">
+
+                    <a href="mailto:asidericopasteleria@gmail.com" target="_blank">
+                        <img src="img/mail.png" alt="Email"
+                            style="width:65px;height:65px;border-radius:6px;border:1px solid #ffd6d6;background:#fff;padding:4px;">
+                    </a>
+
+                    <a href="https://wa.me/34622403795" target="_blank">
+                        <img src="img/whatsapp.png" alt="WhatsApp"
+                            style="width:65px;height:65px;border-radius:6px;border:1px solid #ffd6d6;background:#fff;padding:4px;">
+                    </a>
+
+                </div>
+            </div>
+
         </div>
 
-        <div class="footer-credits">© Foxer Anime Art – Madrid<br>© Krusty Broadcasting web services</div>
-    </div>
+        <div class="footer-copy">
+            © Así de Rico Bakery · Madrid<br>
+            © Krusty Broadcasting web services – Madrid
+        </div>
 
+    </footer>
+
+    <!-- SCRIPT DEL CARRITO -->
     <script>
-        const btnTheme = document.getElementById('btn-theme');
-        btnTheme.addEventListener('click', () => {
-            document.body.classList.toggle('light-mode');
-            btnTheme.innerText = document.body.classList.contains('light-mode') ? '🌙 Modo Noche' : '☀️ Modo Día';
-        });
+        let cart = [];
 
-        const btnGaleria = document.getElementById('btn-abrir-galeria');
-        const seccionGaleria = document.getElementById('galeria-seccion');
-        btnGaleria.addEventListener('click', () => {
-            seccionGaleria.style.display = (seccionGaleria.style.display === 'block') ? 'none' : 'block';
-            btnGaleria.innerText = (seccionGaleria.style.display === 'block') ? 'Cerrar Galería' : 'Instagram';
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCartPage();
+            alert(name + " agregado al carrito");
+        }
+
+        function updateCartPage() {
+            const list = document.getElementById("cart-list");
+            const total = document.getElementById("cart-total");
+            const wa = document.getElementById("cart-whatsapp");
+
+            if (cart.length === 0) {
+                list.innerHTML = "No hay productos en el carrito.";
+                total.innerHTML = "Total: €0";
+                wa.href = "https://wa.me/34622403795?text=Carrito%20vacío";
+                return;
+            }
+
+            let html = "";
+            let suma = 0;
+
+            cart.forEach((item, i) => {
+                html += `
+                    <div style="margin-bottom:10px;">
+                        ${item.name} — €${item.price}
+                        <span onclick="removeItem(${i})"
+                              style="float:right;color:#e91e63;font-weight:800;cursor:pointer;">
+                              ✕
+                        </span>
+                    </div>
+                `;
+                suma += item.price;
+            });
+
+            list.innerHTML = html;
+            total.innerHTML = "Total: €" + suma;
+
+            let mensaje = "Hola Asiderico, quiero pedir:\n\n";
+            cart.forEach(item => mensaje += `• ${item.name} — €${item.price}\n`);
+            mensaje += `\nTotal: €${suma}`;
+
+            wa.href = "https://wa.me/34622403795?text=" + encodeURIComponent(mensaje);
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCartPage();
+        }
+    </script>
+
+    <!-- SCRIPT MODO NOCHE/DÍA -->
+    <script>
+        const btn = document.getElementById("modoToggle");
+        const body = document.body;
+
+        body.classList.add("modo-dia");
+
+        btn.addEventListener("click", () => {
+            if (body.classList.contains("modo-dia")) {
+                body.classList.remove("modo-dia");
+                body.classList.add("modo-noche");
+                btn.textContent = "☀️ Modo Día";
+            } else {
+                body.classList.remove("modo-noche");
+                body.classList.add("modo-dia");
+                btn.textContent = "🌙 Modo Noche";
+            }
         });
     </script>
+
 </body>
 
 </html>
